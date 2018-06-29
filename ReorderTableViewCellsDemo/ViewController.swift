@@ -33,17 +33,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.selectionStyle = .none
         return cell
     }
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let movedObject = fruitsArr[sourceIndexPath.row]
+        fruitsArr.remove(at: sourceIndexPath.row)
+        fruitsArr.insert(movedObject, at: destinationIndexPath.row)
+    }
+    //MARK: TableView Delegate Methods
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
         return .none
     }
     func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
         return false
-    }
-    //MARK: TableView Delegate Methods
-    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let movedObject = fruitsArr[sourceIndexPath.row]
-        fruitsArr.remove(at: sourceIndexPath.row)
-        fruitsArr.insert(movedObject, at: destinationIndexPath.row)
     }
 
 }
